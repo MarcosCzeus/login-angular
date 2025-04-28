@@ -4,9 +4,8 @@ import { hasEmailError, isRequired } from 'src/app/auth/validador';
 import { AuthService } from 'src/app/auth/accesos/auth.service';
 import { toast } from 'ngx-sonner';
 import { Router } from '@angular/router';
-import { GoogleButtonComponent } from 'src/app/auth/interfaz/google-button/google-button.component';
-
-
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 interface FormSingUp {
   email: FormControl<string | null>;
@@ -15,7 +14,8 @@ interface FormSingUp {
 
 @Component({
   selector: 'app-sing-up',
-  imports: [ReactiveFormsModule, GoogleButtonComponent],
+  imports: [ReactiveFormsModule, BrowserModule],
+  standalone: true,
   templateUrl: './sing-up.component.html',
   styleUrl: './sing-up.component.scss'
 })
@@ -57,17 +57,6 @@ export class SingUpComponent {
     await this._authService.singUp({email, password});
 
     toast.success('Usuario creado correctamente');
-    this.router.navigate(['/index']);
-    } catch (error) {
-      toast.error('Error al crear el usuario');
-    }
-  }
-
-  async submitWithGoogle() {
-    try {
-      await this._authService.singInWithGoogle();
-      toast.success('Usuario creado correctamente');
-      this.router.navigate(['/index']);
     } catch (error) {
       toast.error('Error al crear el usuario');
     }

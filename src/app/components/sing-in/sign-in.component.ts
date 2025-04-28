@@ -14,6 +14,7 @@ export interface FormSingIn {
 @Component({
   selector: 'app-sing-in',
   imports: [ReactiveFormsModule, GoogleButtonComponent],
+  standalone: true,
   templateUrl: './sing-in.component.html',
   styleUrl: './sing-in.component.scss'
 })

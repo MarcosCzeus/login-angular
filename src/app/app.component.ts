@@ -9,4 +9,5 @@ import { NgxSonnerToaster } from 'ngx-sonner';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  title = 'login-angular';
 }
